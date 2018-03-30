@@ -17,12 +17,6 @@ class Plot extends JFrame {
         this.points=points;
         drawable = getContentPane();
         canvas = new GraphCanvas();
-        JScrollPane scroll = new JScrollPane(
-                canvas,
-                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS
-        );
-        this.add(scroll);
         drawable.add(canvas);
         setSize(WIDTH, HEIGHT);
     }
@@ -65,8 +59,10 @@ class Plot extends JFrame {
                 int x1 = (int) (XData[i + 1]);
                 int y0 = (int) (YData[i]*20);
                 int y1 = (int) (YData[i + 1]*20);
-                System.out.println(x0+" "+y0);
+               // System.out.println(x0+" "+y0);
 //                g2.scale(5,5);
+                g2.drawLine(0,0,1000,0);
+                g2.drawLine(0,0,0,1000);
                 g2.drawLine(x0, y0, x1, y1);
                 if (i == 0)
                     g2.drawString(("" + x0 + ", " + (double)y0/20), x0 - 20, y0 + 10);

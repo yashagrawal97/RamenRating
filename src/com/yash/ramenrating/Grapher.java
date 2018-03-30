@@ -31,7 +31,6 @@ public class Grapher extends Frame implements WindowListener, ActionListener
         add(b2);
         t1=new TextField("",10);
         add(t1);
-
         b3=new Button("Plot");
         add(b3);
         this.setSize(1200,1000);
