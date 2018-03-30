@@ -8,11 +8,12 @@ import java.io.FileReader;
 
 public class Grapher extends Frame implements WindowListener, ActionListener
 {
-    Button b1,b2;
+    Button b1,b2,b3;
     TextArea l1;
     TextField t1;
     double mean=0;
     int i=0;
+    String[] cols;
 
     public Grapher()
     {
@@ -30,15 +31,20 @@ public class Grapher extends Frame implements WindowListener, ActionListener
         add(b2);
         t1=new TextField("",10);
         add(t1);
+
+        b3=new Button("Plot");
+        add(b3);
         this.setSize(1200,1000);
         this.setVisible(true);
         addWindowListener(this);
         b1.addActionListener(this);
         b2.addActionListener(this);
+        b3.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e)
     {
+
         if(e.getSource()==b1) {
             BufferedReader reader;
             String line;
@@ -47,7 +53,7 @@ public class Grapher extends Frame implements WindowListener, ActionListener
                 l1.setText("");
                 reader = new BufferedReader(new FileReader("inputdata.csv"));
                 line = reader.readLine();
-                String[] cols = line.split(",");
+                cols = line.split(",");
                 l1.append(cols[0] + "\t" + cols[5]);
                 l1.append("\n");
                 line = reader.readLine();
@@ -71,6 +77,11 @@ public class Grapher extends Frame implements WindowListener, ActionListener
 
                 t1.setText(String.valueOf(mean));
 
+        }
+        else if(e.getSource()==b3)
+        {
+            Frame f = new Plot(i);
+            f.setVisible(true);
         }
     }
 
